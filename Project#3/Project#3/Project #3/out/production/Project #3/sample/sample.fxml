@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <top>
+      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab text="Open/Close Accounts">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="300.0" prefWidth="600.0">
+                     <children>
+                        <VBox prefHeight="290.0" prefWidth="600.0">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="600.0">
+                                 <children>
+                                    <VBox prefHeight="100.0" prefWidth="107.0">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="First Name">
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" top="10.0" />
+                                             </VBox.margin></Text>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name">
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" top="5.0" />
+                                             </VBox.margin></Text>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date Open">
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" top="5.0" />
+                                             </VBox.margin></Text>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Balance" />
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="100.0" prefWidth="201.0">
+                                       <children>
+                                          <TextField fx:id="firstNameAcc" />
+                                          <TextField fx:id="lastNameAcc" prefHeight="100.0" prefWidth="100.0">
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" top="10.0" />
+                                             </VBox.margin></TextField>
+                                          <HBox>
+                                             <children>
+                                                <TextField fx:id="dateOpenMonthAcc" promptText="MM" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" / " />
+                                                <TextField fx:id="dateOpenDayAcc" promptText="DD">
+                                                   <HBox.margin>
+                                                      <Insets />
+                                                   </HBox.margin>
+                                                </TextField>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" / " />
+                                                <TextField fx:id="dateOpenYearAcc" promptText="YYYY" />
+                                             </children>
+                                          </HBox>
+                                          <TextField fx:id="balanceAcc" onKeyReleased="#checkIntegerAcc" promptText="\$">
+                                             <padding>
+                                                <Insets bottom="10.0" top="10.0" />
+                                             </padding></TextField>
+                                       </children>
+                                    </VBox>
+                                    <VBox id="accountToggleGroupAcc" prefHeight="100.0" prefWidth="120.0">
+                                       <children>
+                                          <RadioButton fx:id="checkingAcc" mnemonicParsing="false" onAction="#accountTypeListenerAcc" text="Checking">
+                                             <toggleGroup>
+                                                <ToggleGroup fx:id="accountToggleGroupAcc" />
+                                             </toggleGroup>
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" top="10.0" />
+                                             </VBox.margin></RadioButton>
+                                          <RadioButton fx:id="savingsAcc" mnemonicParsing="false" onAction="#accountTypeListenerAcc" text="Savings" toggleGroup="$accountToggleGroupAcc">
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" top="10.0" />
+                                             </VBox.margin></RadioButton>
+                                          <RadioButton fx:id="moneyMarketAcc" mnemonicParsing="false" onAction="#accountTypeListenerAcc" prefWidth="100.0" text="Money Market" toggleGroup="$accountToggleGroupAcc">
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" top="10.0" />
+                                             </VBox.margin></RadioButton>
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </VBox>
+                                    <VBox prefHeight="100.0" prefWidth="137.0">
+                                       <children>
+                                          <CheckBox fx:id="directDeposit" disable="true" mnemonicParsing="false" text="Direct Deposit">
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" top="10.0" />
+                                             </VBox.margin></CheckBox>
+                                          <CheckBox fx:id="loyalCustomer" disable="true" mnemonicParsing="false" prefHeight="17.0" prefWidth="133.0" text="Loyal Customer">
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" top="10.0" />
+                                             </VBox.margin></CheckBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="600.0">
+                                 <children>
+                                    <Button fx:id="openAccount" mnemonicParsing="false" onAction="#openAccount" text="Open Account">
+                                       <HBox.margin>
+                                          <Insets left="10.0" right="10.0" />
+                                       </HBox.margin></Button>
+                                    <Button fx:id="closeAccount" mnemonicParsing="false" onAction="#closeAccount" text="Close Account">
+                                       <HBox.margin>
+                                          <Insets left="10.0" right="10.0" />
+                                       </HBox.margin></Button>
+                                    <Button fx:id="clear" mnemonicParsing="false" onAction="#clearScreen" text="Clear">
+                                       <HBox.margin>
+                                          <Insets left="10.0" right="10.0" />
+                                       </HBox.margin></Button>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Deposit/Withdraw Funds">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="306.0" prefWidth="600.0">
+                     <children>
+                        <HBox prefHeight="290.0" prefWidth="600.0">
+                           <children>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="First Name">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" top="10.0" />
+                                       </VBox.margin></Text>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" top="10.0" />
+                                       </VBox.margin></Text>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Balance">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" top="10.0" />
+                                       </VBox.margin></Text>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="290.0" prefWidth="192.0">
+                                 <children>
+                                    <TextField fx:id="firstNameTrans">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" top="10.0" />
+                                       </VBox.margin></TextField>
+                                    <TextField fx:id="lastNameTrans">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" top="5.0" />
+                                       </VBox.margin></TextField>
+                                    <TextField fx:id="balanceTrans" onKeyReleased="#checkIntegerTrans" onMouseExited="#checkIntegerTrans" promptText="\$">
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin></TextField>
+                                 </children>
+                              </VBox>
+                              <VBox id="accountToggleGroupTrans" prefHeight="290.0" prefWidth="152.0">
+                                 <children>
+                                    <RadioButton fx:id="checkingTrans" mnemonicParsing="false" text="Checking">
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="accountToggleGroupTrans" />
+                                       </toggleGroup>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" top="10.0" />
+                                       </VBox.margin></RadioButton>
+                                    <RadioButton fx:id="savingsTrans" mnemonicParsing="false" text="Savings" toggleGroup="$accountToggleGroupTrans">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" top="10.0" />
+                                       </VBox.margin></RadioButton>
+                                    <RadioButton fx:id="moneyMarketTrans" mnemonicParsing="false" text="Money Market" toggleGroup="$accountToggleGroupTrans">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" top="10.0" />
+                                       </VBox.margin></RadioButton>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Button fx:id="deposit" mnemonicParsing="false" onAction="#deposit" text="Deposit">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" top="10.0" />
+                                       </VBox.margin></Button>
+                                    <Button fx:id="withdraw" mnemonicParsing="false" onAction="#withdraw" text="Withdraw">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" top="10.0" />
+                                       </VBox.margin></Button>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Account Database">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <HBox layoutX="2.0" layoutY="7.0" prefHeight="159.0" prefWidth="800.0">
+                           <children>
+                              <VBox prefHeight="159.0" prefWidth="144.0">
+                                 <children>
+                                    <Button fx:id="importFile" mnemonicParsing="false" text="Import File">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" top="10.0" />
+                                       </VBox.margin>
+                                    </Button>
+                                    <Button fx:id="exportFile" mnemonicParsing="false" text="Export File">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" top="10.0" />
+                                       </VBox.margin>
+                                    </Button>
+                                 </children>
+                              </VBox>
+                              <VBox id="databasePrintToggleGroup" prefHeight="159.0" prefWidth="649.0">
+                                 <children>
+                                    <RadioButton fx:id="printAccounts" mnemonicParsing="false" text="Print the list of accounts in the database." wrapText="true">
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="databasePrintToggleGroup" />
+                                       </toggleGroup>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </VBox.margin>
+                                    </RadioButton>
+                                    <RadioButton fx:id="printByDateOpen" mnemonicParsing="false" text="Calculate the monthly interests and fees, and print the account statements, sorted by the dates opened in ascending order." toggleGroup="$databasePrintToggleGroup" wrapText="true">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </VBox.margin>
+                                    </RadioButton>
+                                    <RadioButton fx:id="printByLastName" mnemonicParsing="false" text="Calculate the monthly interests and fees, and print the account statements, sorted by the last names in ascending order." toggleGroup="$databasePrintToggleGroup" wrapText="true">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </VBox.margin>
+                                    </RadioButton>
+                                    <Button fx:id="printButton" mnemonicParsing="false" onAction="#printDatabase" text="Print">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </VBox.margin>
+                                    </Button>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </top>
+   <center>
+      <TextArea fx:id="display" editable="false" prefHeight="280.0" prefWidth="800.0" text="Transaction processing starts.....&#10;" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets top="10.0" />
+         </BorderPane.margin></TextArea>
+   </center>
+</BorderPane>
